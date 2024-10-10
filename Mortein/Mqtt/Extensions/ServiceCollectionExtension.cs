@@ -11,8 +11,7 @@ namespace Mortein.Mqtt.Extensions;
 public static class ServiceCollectionExtension
 {
     // TODO: read from somewhere other than the local filesystem.
-    private static readonly X509Certificate2 certificate
-        = new("/workspaces/api/api.pfx", "", X509KeyStorageFlags.Exportable);
+    private static readonly X509Certificate2 certificate = new("/workspaces/api/api.pfx");
 
     /// <summary>
     /// Registers a hosted MQTT client as a service in the <see cref="IServiceCollection" />.
