@@ -1,6 +1,5 @@
 using Mortein.Mqtt.Services;
 using MQTTnet.Client;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Mortein.Mqtt.Extensions;
 
@@ -10,9 +9,6 @@ namespace Mortein.Mqtt.Extensions;
 /// </summary>
 public static class ServiceCollectionExtension
 {
-    // TODO: read from somewhere other than the local filesystem.
-    private static readonly X509Certificate2 certificate = new("/workspaces/api/api.pfx");
-
     /// <summary>
     /// Registers a hosted MQTT client as a service in the <see cref="IServiceCollection" />.
     /// </summary>
@@ -24,6 +20,7 @@ public static class ServiceCollectionExtension
     {
         services.AddMqttClientServiceWithConfig(optionsBuilder =>
         {
+            var certificate = MqttAuthentication.GetAwsMqttCertificate();
             optionsBuilder
                 .WithClientId(Environment.GetEnvironmentVariable("MQTT_CLIENT_ID"))
                 .WithoutPacketFragmentation()
