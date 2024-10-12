@@ -30,7 +30,7 @@ public static class ServiceCollectionExtension
                     options
                         .UseTls()
                         .WithAllowUntrustedCertificates(false)
-                        .WithClientCertificates([certificate])
+                        .WithClientCertificates([certificate.Result])
                         .WithIgnoreCertificateChainErrors(false)
                         .WithIgnoreCertificateRevocationErrors(false);
                 });

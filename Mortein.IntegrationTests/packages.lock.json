@@ -101,6 +101,19 @@
                     "Amazon.Lambda.Core": "2.2.0"
                 }
             },
+            "AWSSDK.Core": {
+                "type": "Transitive",
+                "resolved": "3.7.400.33",
+                "contentHash": "PZMgJzl+ld73WXa+8FlBEMPF4q4r1Aqj76tnp1sKQGkWY1JLvchW50v1DLrUpkdzBuvVFi4EEMF/QlRGGUw17Q=="
+            },
+            "AWSSDK.S3": {
+                "type": "Transitive",
+                "resolved": "3.7.404.5",
+                "contentHash": "owBlG8J79XXyJ3KK1nq2p4vltQ6CJtbdU7uMvwnOGuVNy9o5pgdW3hjjGh+sdVikHeU7JRSw0hl9KmvpdAaw7A==",
+                "dependencies": {
+                    "AWSSDK.Core": "[3.7.400.33, 4.0.0)"
+                }
+            },
             "Microsoft.AspNetCore.OpenApi": {
                 "type": "Transitive",
                 "resolved": "7.0.10",
@@ -690,6 +703,7 @@
             "mortein": {
                 "type": "Project",
                 "dependencies": {
+                    "AWSSDK.S3": "[3.7.404.5, )",
                     "Amazon.Lambda.AspNetCoreServer": "[9.0.0, )",
                     "Amazon.Lambda.Core": "[2.2.0, )",
                     "Amazon.Lambda.Serialization.SystemTextJson": "[2.4.1, )",

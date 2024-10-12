@@ -30,6 +30,15 @@
                     "Amazon.Lambda.Core": "2.2.0"
                 }
             },
+            "AWSSDK.S3": {
+                "type": "Direct",
+                "requested": "[3.7.404.5, )",
+                "resolved": "3.7.404.5",
+                "contentHash": "owBlG8J79XXyJ3KK1nq2p4vltQ6CJtbdU7uMvwnOGuVNy9o5pgdW3hjjGh+sdVikHeU7JRSw0hl9KmvpdAaw7A==",
+                "dependencies": {
+                    "AWSSDK.Core": "[3.7.400.33, 4.0.0)"
+                }
+            },
             "Microsoft.AspNetCore.OpenApi": {
                 "type": "Direct",
                 "requested": "[7.0.10, )",
@@ -98,6 +107,11 @@
                     "Microsoft.Extensions.Logging": "2.1.0",
                     "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
                 }
+            },
+            "AWSSDK.Core": {
+                "type": "Transitive",
+                "resolved": "3.7.400.33",
+                "contentHash": "PZMgJzl+ld73WXa+8FlBEMPF4q4r1Aqj76tnp1sKQGkWY1JLvchW50v1DLrUpkdzBuvVFi4EEMF/QlRGGUw17Q=="
             },
             "Microsoft.EntityFrameworkCore.Abstractions": {
                 "type": "Transitive",
