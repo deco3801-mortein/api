@@ -6,7 +6,8 @@
             "type": "coreclr",
             "request": "launch",
             "program": "${workspaceFolder}/Mortein/bin/Debug/net8.0/Mortein.dll",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "justMyCode": false
         }
     ]
 }
