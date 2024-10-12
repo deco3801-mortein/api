@@ -78,14 +78,6 @@ public class Startup(IConfiguration configuration)
             c.SwaggerEndpoint("/openapi.json", "Mortein API");
         });
 
-        using (var scope = app.ApplicationServices.CreateScope())
-        {
-            var services = scope.ServiceProvider;
-
-            var context = services.GetRequiredService<DatabaseContext>();
-            context.Database.EnsureCreated();
-        }
-
         app.UseRouting();
         app.UseCors();
 
