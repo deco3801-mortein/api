@@ -9,9 +9,7 @@ namespace Mortein;
 /// <summary>
 /// Configure the application's startup.
 /// </summary>
-/// <remarks>
 ///
-/// </remarks>
 /// <param name="configuration"></param>
 public class Startup(IConfiguration configuration)
 {
