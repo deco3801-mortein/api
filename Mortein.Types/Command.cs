@@ -7,6 +7,7 @@ namespace Mortein.Types;
 public enum CommandType
 {
     ToggleVibration,
+    VibrateForDuration,
 }
 
 
@@ -14,6 +15,7 @@ public enum CommandType
 /// Command for a device.
 /// </summary>
 [JsonDerivedType(typeof(ToggleVibrationCommand))]
+[JsonDerivedType(typeof(VibrateForDurationCommand))]
 public abstract class Command
 {
     /// <summary>
@@ -36,4 +38,15 @@ public abstract class Command
 public class ToggleVibrationCommand : Command
 {
     public override CommandType Type { get => CommandType.ToggleVibration; }
+}
+
+
+public class VibrateForDurationCommand : Command
+{
+    public override CommandType Type { get => CommandType.VibrateForDuration; }
+
+    /// <summary>
+    /// The duration for which to vibrate the device.
+    /// </summary>
+    public required int Seconds { get; set; }
 }

@@ -74,4 +74,26 @@ public class CommandController(DatabaseContext context, MqttClientService client
         });
         return NoContent();
     }
+
+    /// <summary>
+    /// Vibrate Device for Duration
+    /// </summary>
+    ///
+    /// <remarks>
+    /// Vibrate a device by ID for a specified duration.
+    /// </remarks>
+    ///
+    /// <param name="deviceId">The device to vibrate.</param>
+    /// <param name="seconds">The duration of the vibration.</param>
+    [HttpPost("VibrateForDuration")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult VibrateDeviceForDuration(Guid deviceId, int seconds)
+    {
+        PublishCommand(deviceId, new VibrateForDurationCommand()
+        {
+            DeviceId = deviceId,
+            Seconds = seconds,
+        });
+        return NoContent();
+    }
 }
