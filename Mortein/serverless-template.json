@@ -20,7 +20,7 @@
                 "CodeUri": "",
                 "MemorySize": 512,
                 "Timeout": 30,
-                "Role": null,
+                "Role": "arn:aws:iam::017820696635:role/lambda-role",
                 "Policies": ["AWSLambda_FullAccess"],
                 "Events": {
                     "ProxyResource": {
