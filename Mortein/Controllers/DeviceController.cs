@@ -6,7 +6,7 @@ namespace Mortein.Controllers;
 /// <summary>
 /// API controller for devices.
 /// </summary>
-/// 
+///
 /// <param name="context">The context which enables interaction with the database.</param>
 [ApiController]
 [Route("[controller]")]

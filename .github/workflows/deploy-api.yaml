@@ -38,7 +38,7 @@ jobs:
       - env:
           PARAMS_TEMP_FILE: /tmp/template-params
         run: |
-          echo '${{ toJson(secrets) }}' \
+          echo '${{ toJson(vars) }}' \
             | jq -r '
               def transformkey(key): key | ascii_downcase | gsub("(?<word>[a-z]+)"; "\(.word[0:1] | ascii_upcase)\(.word[1:])") | gsub("_"; "");
               [to_entries[] | {key: transformkey(.key), value: .value} | "\(.key)=\(.value)"] | join(";")

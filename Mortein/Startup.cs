@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using Mortein.Mqtt.Extensions;
 using Mortein.Types;
 using NodaTime.Serialization.SystemTextJson;
 using System.Reflection;
@@ -8,22 +9,20 @@ namespace Mortein;
 /// <summary>
 /// Configure the application's startup.
 /// </summary>
-/// <remarks>
-/// 
-/// </remarks>
+///
 /// <param name="configuration"></param>
 public class Startup(IConfiguration configuration)
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public IConfiguration Configuration { get; } = configuration;
 
     /// <summary>
     /// Add services to the container.
     /// </summary>
-    /// 
-    /// <param name="services"></param>
+    ///
+    /// <param name="services">The <see cref="IServiceCollection" /> to add services to.</param>
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers().AddJsonOptions(options =>
@@ -36,6 +35,7 @@ public class Startup(IConfiguration configuration)
         });
         services.AddDbContext<DatabaseContext>();
         services.AddEndpointsApiExplorer();
+        services.AddMqttClientHostedService();
         services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("openapi", new OpenApiInfo()
@@ -53,7 +53,7 @@ public class Startup(IConfiguration configuration)
     /// <summary>
     /// Configure the HTTP request pipeline.
     /// </summary>
-    /// 
+    ///
     /// <param name="app"></param>
     /// <param name="env"></param>
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -77,14 +77,6 @@ public class Startup(IConfiguration configuration)
             c.RoutePrefix = "docs";
             c.SwaggerEndpoint("/openapi.json", "Mortein API");
         });
-
-        using (var scope = app.ApplicationServices.CreateScope())
-        {
-            var services = scope.ServiceProvider;
-
-            var context = services.GetRequiredService<DatabaseContext>();
-            context.Database.EnsureCreated();
-        }
 
         app.UseRouting();
         app.UseCors();

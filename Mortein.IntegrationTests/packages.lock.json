@@ -101,6 +101,19 @@
                     "Amazon.Lambda.Core": "2.2.0"
                 }
             },
+            "AWSSDK.Core": {
+                "type": "Transitive",
+                "resolved": "3.7.400.33",
+                "contentHash": "PZMgJzl+ld73WXa+8FlBEMPF4q4r1Aqj76tnp1sKQGkWY1JLvchW50v1DLrUpkdzBuvVFi4EEMF/QlRGGUw17Q=="
+            },
+            "AWSSDK.S3": {
+                "type": "Transitive",
+                "resolved": "3.7.404.5",
+                "contentHash": "owBlG8J79XXyJ3KK1nq2p4vltQ6CJtbdU7uMvwnOGuVNy9o5pgdW3hjjGh+sdVikHeU7JRSw0hl9KmvpdAaw7A==",
+                "dependencies": {
+                    "AWSSDK.Core": "[3.7.400.33, 4.0.0)"
+                }
+            },
             "Microsoft.AspNetCore.OpenApi": {
                 "type": "Transitive",
                 "resolved": "7.0.10",
@@ -496,6 +509,11 @@
                     "Newtonsoft.Json": "13.0.1"
                 }
             },
+            "MQTTnet": {
+                "type": "Transitive",
+                "resolved": "4.3.7.1207",
+                "contentHash": "ah7aHXoedWp5m5a4zy2u4phOEVj0QFYzOb5tFKQeV8RRBrxp+1QREF4ymZuG8D+hzB2dhtrrG81WxTFv0PzOeQ=="
+            },
             "NETStandard.Library": {
                 "type": "Transitive",
                 "resolved": "2.0.3",
@@ -685,9 +703,11 @@
             "mortein": {
                 "type": "Project",
                 "dependencies": {
+                    "AWSSDK.S3": "[3.7.404.5, )",
                     "Amazon.Lambda.AspNetCoreServer": "[9.0.0, )",
                     "Amazon.Lambda.Core": "[2.2.0, )",
                     "Amazon.Lambda.Serialization.SystemTextJson": "[2.4.1, )",
+                    "MQTTnet": "[4.3.7.1207, )",
                     "Microsoft.AspNetCore.OpenApi": "[7.0.10, )",
                     "Microsoft.EntityFrameworkCore": "[8.0.8, )",
                     "Mortein.Types": "[1.3.0, )",

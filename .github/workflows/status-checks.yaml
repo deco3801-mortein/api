@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   npm:
     runs-on: ubuntu-24.04
@@ -87,6 +91,13 @@ jobs:
           echo '${{ toJson(vars) }}' \
             | jq -r 'to_entries[] | "\(.key)=\(.value)"' >> .devcontainer/.env
           echo 'GITHUB_ACTIONS=true' >> .devcontainer/.env
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          audience: sts.amazon.com
+          aws-region: ${{ vars.AWS_DEFAULT_REGION }}
+          role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/github-actions
+
       - name: .NET Tests
         uses: devcontainers/ci@v0.3.1900000349
         with:

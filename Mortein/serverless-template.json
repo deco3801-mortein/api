@@ -3,6 +3,8 @@
     "Transform": "AWS::Serverless-2016-10-31",
     "Description": "An AWS Serverless Application that uses the ASP.NET Core framework running in Amazon Lambda.",
     "Parameters": {
+        "MqttBrokerHostname": { "Type": "String" },
+        "MqttClientId": { "Type": "String" },
         "PostgresDb": { "Type": "String" },
         "PostgresHost": { "Type": "String" },
         "PostgresPassword": { "Type": "String" },
@@ -18,7 +20,7 @@
                 "CodeUri": "",
                 "MemorySize": 512,
                 "Timeout": 30,
-                "Role": null,
+                "Role": "arn:aws:iam::017820696635:role/lambda-role",
                 "Policies": ["AWSLambda_FullAccess"],
                 "Events": {
                     "ProxyResource": {
@@ -38,6 +40,8 @@
                 },
                 "Environment": {
                     "Variables": {
+                        "MQTT_BROKER_HOSTNAME": { "Ref": "MqttBrokerHostname" },
+                        "MQTT_CLIENT_ID": { "Ref": "MqttClientId" },
                         "POSTGRES_DB": { "Ref": "PostgresDb" },
                         "POSTGRES_HOST": { "Ref": "PostgresHost" },
                         "POSTGRES_PASSWORD": { "Ref": "PostgresPassword" },

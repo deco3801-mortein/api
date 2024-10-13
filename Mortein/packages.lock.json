@@ -30,6 +30,15 @@
                     "Amazon.Lambda.Core": "2.2.0"
                 }
             },
+            "AWSSDK.S3": {
+                "type": "Direct",
+                "requested": "[3.7.404.5, )",
+                "resolved": "3.7.404.5",
+                "contentHash": "owBlG8J79XXyJ3KK1nq2p4vltQ6CJtbdU7uMvwnOGuVNy9o5pgdW3hjjGh+sdVikHeU7JRSw0hl9KmvpdAaw7A==",
+                "dependencies": {
+                    "AWSSDK.Core": "[3.7.400.33, 4.0.0)"
+                }
+            },
             "Microsoft.AspNetCore.OpenApi": {
                 "type": "Direct",
                 "requested": "[7.0.10, )",
@@ -50,6 +59,12 @@
                     "Microsoft.Extensions.Caching.Memory": "8.0.0",
                     "Microsoft.Extensions.Logging": "8.0.0"
                 }
+            },
+            "MQTTnet": {
+                "type": "Direct",
+                "requested": "[4.3.7.1207, )",
+                "resolved": "4.3.7.1207",
+                "contentHash": "ah7aHXoedWp5m5a4zy2u4phOEVj0QFYzOb5tFKQeV8RRBrxp+1QREF4ymZuG8D+hzB2dhtrrG81WxTFv0PzOeQ=="
             },
             "NodaTime.Serialization.SystemTextJson": {
                 "type": "Direct",
@@ -92,6 +107,11 @@
                     "Microsoft.Extensions.Logging": "2.1.0",
                     "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
                 }
+            },
+            "AWSSDK.Core": {
+                "type": "Transitive",
+                "resolved": "3.7.400.33",
+                "contentHash": "PZMgJzl+ld73WXa+8FlBEMPF4q4r1Aqj76tnp1sKQGkWY1JLvchW50v1DLrUpkdzBuvVFi4EEMF/QlRGGUw17Q=="
             },
             "Microsoft.EntityFrameworkCore.Abstractions": {
                 "type": "Transitive",

@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C#: Mortein",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/Mortein/bin/Debug/net8.0/Mortein.dll",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        }
+    ]
+}
