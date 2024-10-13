@@ -54,4 +54,24 @@ public class CommandController(DatabaseContext context, MqttClientService client
     {
         return deviceId.ToString();
     }
+
+    /// <summary>
+    /// Toggle Device Vibration
+    /// </summary>
+    ///
+    /// <remarks>
+    /// Toggles the vibration of a device by ID.
+    /// </remarks>
+    ///
+    /// <param name="deviceId">The device to vibrate.</param>
+    [HttpPost("Toggle")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult ToggleDeviceVibration(Guid deviceId)
+    {
+        PublishCommand(deviceId, new ToggleVibrationCommand()
+        {
+            DeviceId = deviceId,
+        });
+        return NoContent();
+    }
 }

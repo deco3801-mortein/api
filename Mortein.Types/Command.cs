@@ -4,12 +4,16 @@ using NodaTime;
 namespace Mortein.Types;
 
 
-public enum CommandType { }
+public enum CommandType
+{
+    ToggleVibration,
+}
 
 
 /// <summary>
 /// Command for a device.
 /// </summary>
+[JsonDerivedType(typeof(ToggleVibrationCommand))]
 public abstract class Command
 {
     /// <summary>
@@ -26,4 +30,10 @@ public abstract class Command
     /// The type of command.
     /// </summary>
     public abstract CommandType Type { get; }
+}
+
+
+public class ToggleVibrationCommand : Command
+{
+    public override CommandType Type { get => CommandType.ToggleVibration; }
 }
