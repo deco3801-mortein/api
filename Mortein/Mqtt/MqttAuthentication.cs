@@ -13,11 +13,7 @@ public static class MqttAuthentication
     private static readonly string credentialBucketName = "api-mqtt-certificate";
     private static readonly string objectName = "api.pfx";
 
-    private static readonly AmazonS3Client s3 = new(
-        Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID"),
-        Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY"),
-        RegionEndpoint.APSoutheast2
-    );
+    private static readonly AmazonS3Client s3 = new(RegionEndpoint.APSoutheast2);
 
     private static async Task<GetObjectResponse?> GetCredentialFileObject()
     {
