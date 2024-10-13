@@ -5,8 +5,6 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mortein", "Mortein\Mortein.csproj", "{D5707188-8017-4864-A816-7EC324FCF5A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mortein.IntegrationTests", "Mortein.IntegrationTests\Mortein.IntegrationTests.csproj", "{A8595760-A1F4-4AF4-B727-352717B0CAC1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mortein.Types", "Mortein.Types\Mortein.Types.csproj", "{89DAD340-71B6-482D-B937-534CAD16361B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mortein.UnitTests", "Mortein.UnitTests\Mortein.UnitTests.csproj", "{755DE551-B295-48B8-A75C-720EC60FF5F3}"
@@ -21,10 +19,6 @@ Global
 		{D5707188-8017-4864-A816-7EC324FCF5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5707188-8017-4864-A816-7EC324FCF5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5707188-8017-4864-A816-7EC324FCF5A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8595760-A1F4-4AF4-B727-352717B0CAC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8595760-A1F4-4AF4-B727-352717B0CAC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8595760-A1F4-4AF4-B727-352717B0CAC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8595760-A1F4-4AF4-B727-352717B0CAC1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89DAD340-71B6-482D-B937-534CAD16361B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89DAD340-71B6-482D-B937-534CAD16361B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89DAD340-71B6-482D-B937-534CAD16361B}.Release|Any CPU.ActiveCfg = Release|Any CPU
