@@ -68,11 +68,18 @@ public class CommandController(DatabaseContext context, MqttClientService client
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult ToggleDeviceVibration(Guid deviceId)
     {
-        PublishCommand(deviceId, new ToggleVibrationCommand()
+        try
         {
-            DeviceId = deviceId,
-        });
-        return NoContent();
+            PublishCommand(deviceId, new ToggleVibrationCommand()
+            {
+                DeviceId = deviceId,
+            });
+            return NoContent();
+        }
+        catch
+        {
+            return Problem();
+        }
     }
 
     /// <summary>
