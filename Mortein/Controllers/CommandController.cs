@@ -42,7 +42,9 @@ public class CommandController(DatabaseContext context, MqttClientService client
     /// <param name="command">The command to publish.</param>
     private async void PublishCommand(Guid deviceId, Command command)
     {
+        await _client.ConnectAsync(_client.Options);
         await _client.PublishStringAsync(ConstructTopicName(deviceId), JsonSerializer.Serialize(command, jsonSerializerOptions));
+        await _client.DisconnectAsync();
     }
 
     /// <summary>

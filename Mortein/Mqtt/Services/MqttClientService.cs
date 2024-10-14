@@ -10,7 +10,7 @@ namespace Mortein.Mqtt.Services;
 /// <param name="options">MQTT client configuration options.</param>
 /// <param name="logger">Logging facility.</param>
 public class MqttClientService(MqttClientOptions options, ILogger<MqttClientService> logger)
-    : BackgroundService, IMqttClientService
+    : IMqttClientService
 {
     private readonly IMqttClient mqttClient = new MqttFactory().CreateMqttClient();
 
@@ -24,51 +24,13 @@ public class MqttClientService(MqttClientOptions options, ILogger<MqttClientServ
     private readonly ILogger<MqttClientService> _logger = logger;
 
     /// <inheritdoc />
-    public override async Task StartAsync(CancellationToken cancellationToken)
+    public async Task StartAsync(CancellationToken cancellationToken)
     {
         await mqttClient.ConnectAsync(options, cancellationToken);
-
     }
 
     /// <inheritdoc />
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        return Task.Run(
-        async () =>
-        {
-            // Repeatedly ensure the client is connected.
-            while (true)
-            {
-                try
-                {
-                    if (await mqttClient.TryPingAsync())
-                    {
-                        _logger.LogInformation("MQTT client is connected.");
-                    }
-                    else
-                    {
-                        _logger.LogInformation("MQTT client is disconnected. Reconnecting...");
-
-                        await mqttClient.ConnectAsync(mqttClient.Options, CancellationToken.None);
-
-                        _logger.LogInformation("MQTT client is connected.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "MQTT client connection failed");
-                }
-                finally
-                {
-                    // Check the connection state every 5 seconds.
-                    await Task.Delay(TimeSpan.FromSeconds(5));
-                }
-            }
-        }, stoppingToken);
-    }
-
-    /// <inheritdoc />
-    public override async Task StopAsync(CancellationToken cancellationToken)
+    public async Task StopAsync(CancellationToken cancellationToken)
     {
         if (cancellationToken.IsCancellationRequested)
         {
