@@ -10,7 +10,7 @@ namespace Mortein.Mqtt.Services;
 /// <param name="options">MQTT client configuration options.</param>
 /// <param name="logger">Logging facility.</param>
 public class MqttClientService(MqttClientOptions options, ILogger<MqttClientService> logger)
-    : IMqttClientService
+    : BackgroundService, IMqttClientService
 {
     private readonly IMqttClient mqttClient = new MqttFactory().CreateMqttClient();
 
@@ -24,12 +24,16 @@ public class MqttClientService(MqttClientOptions options, ILogger<MqttClientServ
     private readonly ILogger<MqttClientService> _logger = logger;
 
     /// <inheritdoc />
-    public async Task StartAsync(CancellationToken cancellationToken)
+    public override async Task StartAsync(CancellationToken cancellationToken)
     {
         await mqttClient.ConnectAsync(options, cancellationToken);
 
-        // Discard task, not await it, since it is to run in the background.
-        _ = Task.Run(
+    }
+
+    /// <inheritdoc />
+    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        return Task.Run(
         async () =>
         {
             // Repeatedly ensure the client is connected.
@@ -60,11 +64,11 @@ public class MqttClientService(MqttClientOptions options, ILogger<MqttClientServ
                     await Task.Delay(TimeSpan.FromSeconds(5));
                 }
             }
-        }, cancellationToken);
+        }, stoppingToken);
     }
 
     /// <inheritdoc />
-    public async Task StopAsync(CancellationToken cancellationToken)
+    public override async Task StopAsync(CancellationToken cancellationToken)
     {
         if (cancellationToken.IsCancellationRequested)
         {
