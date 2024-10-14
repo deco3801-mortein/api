@@ -37,7 +37,11 @@ public class MqttClientService(MqttClientOptions options, ILogger<MqttClientServ
             {
                 try
                 {
-                    if (!await mqttClient.TryPingAsync())
+                    if (await mqttClient.TryPingAsync())
+                    {
+                        _logger.LogInformation("MQTT client is connected.");
+                    }
+                    else
                     {
                         _logger.LogInformation("MQTT client is disconnected. Reconnecting...");
 
