@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
 
-        <FileVersion>1.0.0</FileVersion>
+        <FileVersion>2.0.0</FileVersion>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
