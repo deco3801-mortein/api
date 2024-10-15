@@ -96,11 +96,18 @@ public class CommandController(DatabaseContext context, MqttClientService client
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult VibrateDeviceForDuration(Guid deviceId, int seconds)
     {
-        PublishCommand(deviceId, new VibrateForDurationCommand()
+        try
         {
-            DeviceId = deviceId,
-            Seconds = seconds,
-        });
-        return NoContent();
+            PublishCommand(deviceId, new VibrateForDurationCommand()
+            {
+                DeviceId = deviceId,
+                Seconds = seconds,
+            });
+            return NoContent();
+        }
+        catch
+        {
+            return Problem();
+        }
     }
 }
