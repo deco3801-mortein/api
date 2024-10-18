@@ -1,8 +1,5 @@
 # Mortein API
 
-In order to authenticate to the AWS MQTT broker, pass a client certificate and private key into
-the following command to generate the required PFX file:
-
 The environment required to build and run this application is defined by this repository's
 dev container [configuration file](./.devcontainer/devcontainer.json).
 
